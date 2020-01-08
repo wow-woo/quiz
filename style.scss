@@ -1,0 +1,101 @@
+body {
+  overflow-y: hidden;
+  position: relative;
+
+  main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > #reset {
+    position: absolute;
+    right: 150px;
+    top: 100px;
+  }
+
+  & > #link-more {
+    position: absolute;
+    right: 30px;
+    top: 100px;
+
+    & > a {
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin ani($name, $state) {
+  animation-name: $name;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-fill-mode: none;
+  animation-delay: 0;
+  animation-play-state: $state;
+}
+
+#options {
+  display: flex;
+
+  & > div {
+    border: 3px solid #000;
+    padding: 5px 1.5rem;
+    margin: 15px;
+
+    &#green {
+      @include ani(greenLight, running);
+    }
+    &#red {
+      @include ani(redLight, running);
+    }
+
+    &:hover {
+      color: #fff;
+      border: 3px solid rgb(140, 130, 130);
+      background-color: rgb(211, 192, 192);
+      box-shadow: 2px 2px 2px rgb(216, 210, 210);
+      cursor: pointer;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+// keyframe
+@keyframes greenLight {
+  0% {
+    background-color: green;
+  }
+  30% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: green;
+  }
+  80% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: green;
+  }
+}
+@keyframes redLight {
+  0% {
+    background-color: red;
+  }
+  30% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: red;
+  }
+  80% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: red;
+  }
+}
